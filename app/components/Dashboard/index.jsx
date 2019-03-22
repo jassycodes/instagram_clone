@@ -1,7 +1,7 @@
 import React            from 'react';
 import axios            from 'axios';
 
-class Login extends React.Component {
+class Dashboard extends React.Component {
   constructor (props) {
     super (props);
 
@@ -9,8 +9,9 @@ class Login extends React.Component {
     this.changeInput = this.changeInput.bind(this);
 
     this.state = {
-        username: '',
-        password: ''
+        // username: '',
+        // password: ''
+        newPhotoUpload: ''
     }
   }
 
@@ -26,28 +27,29 @@ class Login extends React.Component {
   handleSubmit(e) {
     const context = this;
 
-    axios.post('/auth/login', {
-       username: context.state.username,
-       password: context.state.password,
+    axios.post('/pictures/upload', {
+      newPhotoUpload: context.state.newPhotoUpload
+       // username: context.state.username,
+       // password: context.state.password,
     })
     .then((response) => {
-      localStorage['user'] = JSON.stringify(response.data);
-      window.location = '/photos';
+      console.log(response)
     })
     .catch((err) => {
-      console.error('Wrong Password');
+      console.error('Something Wrong');
     })
   }
 
-  render() {
+  render(){
     return (
       <div className="left-padding-50px container-fluid padding-5percent">
-      <h1 className="text-center">INSTAGRAM CLONE LOG IN</h1>
+      <h1 className="text-center">DASHBOARD UPLOAD</h1>
         <img className="changeSize20percent center-block" src={this.state.img}/>
         <div className="formDiv align-items-center justify-content-center">
         <form onSubmit={this.handleSubmit}>
           <div className="form-inputs">
-            <input 
+           <input onChange={this.changeInput} type="file" name="newPhotoUpload" accept="image/*"/>
+{/*            <input 
               onChange={this.changeInput}
               className="login-input formContentSmaller addMargin2percent"
               type='text'
@@ -63,10 +65,10 @@ class Login extends React.Component {
               placeholder='password'
               data-type='password'
               />
-            <span id="password"></span>
+            <span id="password"></span>*/}
             <br />
             <div className="submit">
-              <button id="submit" type="submit" className="btn btn-success addMargin2percent">Log In</button>
+              <button id="submit" type="submit" className="btn btn-success addMargin2percent">Upload</button>
             </div>
           </div>
         </form>
@@ -79,4 +81,4 @@ class Login extends React.Component {
   }
 }
 
-module.exports = Login;  
+module.exports = Dashboard;  

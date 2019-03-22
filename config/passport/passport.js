@@ -29,7 +29,7 @@ module.exports = function(passport,user){
 
   passport.use('local-signup', new LocalStrategy(
     {           
-      usernameField : 'email',
+      usernameField : 'username',
       passwordField : 'password',
       passReqToCallback : true // allows us to pass back the entire request to the callback
     }, function(req, username, password, done) {
@@ -71,11 +71,12 @@ module.exports = function(passport,user){
        passwordField: 'password',
        passReqToCallback: true
     },
-    function(req, username, email, password, done) {
-      User.findOne({where: {email: email}})
+    function(req, username, password, done) {
+      User.findOne({where: {username: username}})
       .then((user) => {
+        console.log("user found");
         if (!user) {
-          return done(null, false, { message: 'Email does not exist' });
+          return done(null, false, { message: 'username does not exist' });
         }
 
         if (!isValidPassword(user.password, password)) {

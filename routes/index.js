@@ -12,15 +12,31 @@ router.get('/', function(req, res, next) {
   return res.render('index');
 });
 
-router.get('/photos', isLoggedIn, function(req, res, next) {
+// router.get('/photos', isLoggedIn, function(req, res, next) {
+//   return res.render('index');
+// });
+
+// router.get('/photos', function(req, res, next) {
+//   return res.render('index');
+// });
+
+router.get('/photos', function(req, res, next) {
   return res.render('index');
+});
+
+router.get('/posts', function(req, res, next) {
+  res.render('index');
 });
 
 router.get('/signup', (req, res, next) => {
   res.render('index');
 });
 
-router.get('/signin', (req, res, next) => {
+router.get('/login', (req, res, next) => {
+  res.render('index');
+});
+
+router.get('/dashboard', (req, res, next) => {
   res.render('index');
 });
 

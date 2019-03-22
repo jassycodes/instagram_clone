@@ -3,6 +3,9 @@ import React from 'react';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {
+    //   this.post = "Halooooo"
+    // }
   }
 
   render() {
@@ -10,6 +13,8 @@ export default class App extends React.Component {
       <div>
         Hello World
       </div>
+    //       <div>
+    // <Post post={post}/></div>
     )
   }
 }

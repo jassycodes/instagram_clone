@@ -16,7 +16,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var pictures = require('./routes/pictures');
 var auth = require('./routes/auth');
-
+ 
 var app = express();
 
 // view engine setup
@@ -79,6 +79,7 @@ models.sequelize.sync().then(function(){
 
 app.listen(port, function() {
   console.log('Listening in on port' + port);
+  console.log('http://localhost:' + port +'/')
 });
 
 module.exports = app;
